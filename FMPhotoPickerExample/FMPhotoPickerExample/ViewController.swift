@@ -28,8 +28,8 @@ class ViewController: UIViewController, FMPhotoPickerViewControllerDelegate, FMI
     @IBOutlet weak var forceCropEnabled: UISwitch!
     @IBOutlet weak var eclipsePreviewEnabled: UISwitch!
     
-    private var maxImage: Int = 5
-    private var maxVideo: Int = 5
+    private var maxImage: Int = 1
+    private var maxVideo: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +40,10 @@ class ViewController: UIViewController, FMPhotoPickerViewControllerDelegate, FMI
         // video off by default
         self.allowVideo.isOn = false
         
-        self.forceCropEnabled.isOn = false
+        self.forceCropEnabled.isOn = true
         self.eclipsePreviewEnabled.isOn = false
         
-        self.selectMode.selectedSegmentIndex = 1
+        self.selectMode.selectedSegmentIndex = 0
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -89,6 +89,7 @@ class ViewController: UIViewController, FMPhotoPickerViewControllerDelegate, FMI
         config.maxVideo = self.maxVideo
         config.forceCropEnabled = forceCropEnabled.isOn
         config.eclipsePreviewEnabled = eclipsePreviewEnabled.isOn
+        config.useCropFirst = true
         
         // in force crop mode, only the first crop option is available
         config.availableCrops = [
